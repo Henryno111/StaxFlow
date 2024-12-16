@@ -1,5 +1,8 @@
 # StaxFlow
 
+
+
+
 ![StaxFlow Logo](logo-placeholder.png)
 
 StaxFlow is an innovative cross-chain bridge solution built on Stacks, featuring AI-powered route optimization, a unique reward system, and enhanced privacy features. Our platform makes bridging assets across chains as simple as sending an email while adding earning opportunities and social features.

@@ -1,22 +1,57 @@
 [project]
-name = "StaxFlow"
+name = "Cross_chain_bridge"
 authors = []
-description = ""
-telemetry = true
+description = "Cross-Chain Bridge Smart Contract"
+telemetry = false
 requirements = []
-[contracts.Cross_chain_bridge-contract]
-path = "contracts/Cross_chain_bridge-contract.clar"
+cache_dir = "./.cache"
+boot_contracts = ["pox", "costs-v2", "bns"]
+
+[contracts.cross_chain_bridge-contract]
+path = "contracts/cross_chain_bridge-contract.clar"
+depends_on = ["constants", "data-vars", "data-maps", "utils", "privacy-pool", "profile-manager", "analytics", "bridge-core", "read-only"]
+
+[contracts.constants]
+path = "contracts/constants.clar"
 depends_on = []
 
-[repl]
-costs_version = 2
-parser_version = 2
+[contracts.data-vars]
+path = "contracts/data-vars.clar"
+depends_on = ["constants"]
+
+[contracts.data-maps]
+path = "contracts/data-maps.clar"
+depends_on = ["constants", "data-vars"]
+
+[contracts.utils]
+path = "contracts/utils.clar"
+depends_on = ["constants", "data-vars", "data-maps"]
+
+[contracts.privacy-pool]
+path = "contracts/privacy-pool.clar"
+depends_on = ["constants", "data-vars", "data-maps", "utils"]
+
+[contracts.profile-manager]
+path = "contracts/profile-manager.clar"
+depends_on = ["constants", "data-vars", "data-maps", "utils"]
+
+[contracts.analytics]
+path = "contracts/analytics.clar"
+depends_on = ["constants", "data-vars", "data-maps", "utils"]
+
+[contracts.bridge-core]
+path = "contracts/bridge-core.clar"
+depends_on = ["constants", "data-vars", "data-maps", "utils", "privacy-pool", "profile-manager", "analytics"]
+
+[contracts.read-only]
+path = "contracts/read-only.clar"
+depends_on = ["constants", "data-vars", "data-maps", "utils"]
 
 [repl.analysis]
 passes = ["check_checker"]
 
 [repl.analysis.check_checker]
-strict = false
+strict = true
 trusted_sender = false
 trusted_caller = false
 callee_filter = false
